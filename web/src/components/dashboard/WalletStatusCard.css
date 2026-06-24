@@ -1,0 +1,23 @@
+.wallet-card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.wallet-card h2 {
+  margin-bottom: 20px;
+}
+
+.wallet-info {
+  margin-bottom: 20px;
+}
+
+.wallet-info p {
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.wallet-info h3 {
+  font-size: 18px;
+}

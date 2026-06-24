@@ -1,7 +1,9 @@
+import "./Sidebar.css";
+
 function Sidebar() {
   return (
-    <aside>
-      <h2>APAX</h2>
+    <aside className="sidebar">
+      <h2 className="logo">APAX</h2>
 
       <ul>
         <li>Dashboard</li>

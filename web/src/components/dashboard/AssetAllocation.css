@@ -1,0 +1,27 @@
+.asset-allocation {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.asset-allocation h2 {
+  margin-bottom: 20px;
+}
+
+.pie-container {
+  height: 220px;
+  margin-bottom: 20px;
+}
+
+.allocation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.allocation-item {
+  display: flex;
+  justify-content: space-between;
+  color: #cbd5e1;
+}

@@ -1,15 +1,17 @@
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import "./PageLayout.css";
 
 function PageLayout({ children }) {
   return (
-    <div>
+    <div className="layout">
       <Sidebar />
 
-      <main>
+      <div className="content">
         <Navbar />
+
         {children}
-      </main>
+      </div>
     </div>
   );
 }
