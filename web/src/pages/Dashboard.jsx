@@ -13,26 +13,36 @@ function Dashboard() {
       <div className="dashboard">
         
         <div className="stats-grid">
-          <StatCard
-            title="Portfolio Value"
-            value="$1,248,750"
-          />
 
-          <StatCard
-            title="Total Holdings"
-            value="3"
-          />
+<StatCard
+type="portfolio"
+title="Total Portfolio Value"
+value="$1,248,750"
+subtitle="+6.35% (24h)"
+/>
 
-          <StatCard
-            title="Wallet Status"
-            value="Approved"
-          />
+<StatCard
+type="holdings"
+title="Total Holdings"
+value="3"
+subtitle="Assets in Vault"
+/>
 
-          <StatCard
-            title="24H Change"
-            value="+6.35%"
-          />
-        </div>
+<StatCard
+type="wallet"
+title="Wallet Status"
+value="Approved"
+subtitle="Wallet Ready"
+/>
+
+<StatCard
+type="change"
+title="24H Change"
+value="+$74,512"
+subtitle="+6.35%"
+/>
+
+</div>
         <div className="dashboard-grid">
             <PortfolioChart />
             <AssetAllocation />

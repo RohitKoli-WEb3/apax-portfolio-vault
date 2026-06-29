@@ -1,24 +1,67 @@
 .stat-card {
-  background: #111827;
+  background: linear-gradient(135deg, #111827, #0f172a);
   border: 1px solid #1f2937;
-  border-radius: 16px;
-  padding: 24px;
-  min-height: 140px;
-  transition: 0.3s ease;
+  border-radius: 20px;
+  padding: 22px;
+  transition: .3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
 }
 
-.stat-card:hover {
-  transform: translateY(-3px);
+.stat-card:hover{
+  transform: translateY(-6px);
 }
 
-.stat-card h3 {
-  font-size: 14px;
-  color: #94a3b8;
-  margin-bottom: 12px;
+.stat-top{
+  display:flex;
+  gap:18px;
 }
 
-.stat-card h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: white;
+.icon-box{
+  width:62px;
+  height:62px;
+  border-radius:16px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  color:white;
+}
+
+.portfolio{
+  background:#16a34a;
+}
+
+.holdings{
+  background:#4338ca;
+}
+
+.wallet{
+  background:#059669;
+}
+
+.change{
+  background:#d97706;
+}
+
+.stat-info h4{
+  color:#94a3b8;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.stat-info h2{
+  color:white;
+  font-size:36px;
+  margin-bottom:8px;
+}
+
+.stat-info p{
+  color:#22c55e;
+  font-size:15px;
+}
+
+.mini-chart{
+  margin-top:20px;
+  display:flex;
+  justify-content:flex-end;
 }
