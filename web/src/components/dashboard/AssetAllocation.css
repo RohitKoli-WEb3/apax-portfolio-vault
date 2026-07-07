@@ -6,9 +6,11 @@ border:1px solid #1f2937;
 
 border-radius:20px;
 
-padding:24px;
+padding:30px;
 
 position:relative;
+height:300px;
+width:500px;
 
 }
 
@@ -22,7 +24,7 @@ margin-bottom:20px;
 
 position:relative;
 
-height:260px;
+height:0px;
 
 }
 
@@ -30,13 +32,13 @@ height:260px;
 
 position:absolute;
 
-top:50%;
+top:0%;
 
 left:50%;
 
 transform:translate(-50%,-50%);
 
-text-align:center;
+text-align:right;
 
 }
 

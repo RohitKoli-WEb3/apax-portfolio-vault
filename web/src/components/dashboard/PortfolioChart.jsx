@@ -10,16 +10,8 @@ import {
   Tooltip,
 } from "recharts";
 
-function PortfolioChart() {
-  const data = [
-    { day: "May 19", portfolio: 22000, market: 24000 },
-    { day: "May 20", portfolio: 12000, market: 20000 },
-    { day: "May 21", portfolio: 18000, market: 22000 },
-    { day: "May 22", portfolio: 26000, market: 18000 },
-    { day: "May 23", portfolio: 31000, market: 17000 },
-    { day: "May 24", portfolio: 28000, market: 15000 },
-    { day: "May 25", portfolio: 39000, market: 21000 },
-  ];
+function PortfolioChart({ data }) {
+ 
 
   return (
     <div className="portfolio-chart">

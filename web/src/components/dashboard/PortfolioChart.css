@@ -1,9 +1,13 @@
 .portfolio-chart{
     background:#111827;
     border-radius:20px;
-    padding:24px;
+    padding:60px;
     border:1px solid #1f2937;
+    height: 400px;
+    width:600px;
+    
 }
+
 
 .chart-header{
     display:flex;
@@ -57,3 +61,4 @@
 .chart-filter .active{
     background:#374151;
 }
+

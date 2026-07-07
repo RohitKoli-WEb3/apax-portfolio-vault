@@ -2,8 +2,8 @@
   display: flex;
 }
 
-.content {
-  margin-left: 260px;
-  width: calc(100% - 260px);
-  min-height: 100vh;
+.main-content {
+  margin-left: 180px;
+  width: calc(100% - 180px);
+  overflow-x: hidden;
 }

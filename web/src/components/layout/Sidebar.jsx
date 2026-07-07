@@ -1,9 +1,24 @@
 import "./Sidebar.css";
+import logo from "../../assets/apaxLogo.png";
 
+import {
+
+FaHome,
+
+FaWallet,
+
+FaExchangeAlt,
+
+FaCog,
+
+FaChartPie
+
+} from "react-icons/fa";
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <h2 className="logo">APAX</h2>
+      <h2 className="logo"></h2>
+      <img src={logo} alt="APAX Logo" className="logo-img" />
 
       <ul>
         <li>Dashboard</li>
@@ -17,3 +32,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
+

@@ -1,23 +1,107 @@
-.wallet-card {
-  background: #111827;
-  border: 1px solid #1f2937;
-  border-radius: 16px;
-  padding: 24px;
+.wallet-card{
+
+background:#111827;
+
+border:1px solid #1f2937;
+
+border-radius:20px;
+
+padding:24px;
+
 }
 
-.wallet-card h2 {
-  margin-bottom: 20px;
+.wallet-header{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:24px;
+
 }
 
-.wallet-info {
-  margin-bottom: 20px;
+.wallet-icon{
+
+font-size:26px;
+
+color:#22c55e;
+
 }
 
-.wallet-info p {
-  color: #94a3b8;
-  margin-bottom: 6px;
+.wallet-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px 0;
+
+border-bottom:1px solid #1f2937;
+
 }
 
-.wallet-info h3 {
-  font-size: 18px;
+.wallet-address{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-family:monospace;
+
+}
+
+.copy-icon{
+
+cursor:pointer;
+
+color:#94a3b8;
+
+}
+
+.approved{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+color:#22c55e;
+
+font-weight:600;
+
+}
+
+.wallet-btn{
+
+margin-top:24px;
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+background:#2563eb;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.wallet-btn:hover{
+
+background:#1d4ed8;
+
 }
