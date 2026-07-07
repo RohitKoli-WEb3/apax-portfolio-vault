@@ -1,4 +1,5 @@
 import "./AssetAllocation.css";
+
 import {
   PieChart,
   Pie,
@@ -25,40 +26,48 @@ const data = [
 ];
 
 const COLORS = [
-  "#f59e0b",
-  "#9ca3af",
-  "#7c3aed",
+  "#00E5FF",
+  "#8B5CF6",
+  "#F59E0B",
 ];
 
 function AssetAllocation() {
   return (
     <div className="asset-card">
 
-      <h2>Asset Allocation</h2>
+      <div className="asset-header">
 
-      <div className="chart-wrapper">
+        <h2>Asset Allocation</h2>
+
+        <button>Details</button>
+
+      </div>
+
+      <div className="donut-wrapper">
 
         <ResponsiveContainer
           width="100%"
-          height={260}
+          height={240}
         >
+
           <PieChart>
 
             <Pie
               data={data}
-              innerRadius={70}
-              outerRadius={105}
               dataKey="value"
+              innerRadius={65}
+              outerRadius={95}
+              paddingAngle={4}
             >
 
-              {data.map((item,index)=>(
+              {data.map((item,index)=>
 
                 <Cell
                   key={index}
                   fill={COLORS[index]}
                 />
 
-              ))}
+              )}
 
             </Pie>
 
@@ -66,7 +75,7 @@ function AssetAllocation() {
 
         </ResponsiveContainer>
 
-        <div className="center-text">
+        <div className="center-value">
 
           <h3>$1.25M</h3>
 
@@ -85,7 +94,7 @@ function AssetAllocation() {
             className="asset-row"
           >
 
-            <div className="left">
+            <div className="asset-left">
 
               <span
                 className="dot"
@@ -104,7 +113,7 @@ function AssetAllocation() {
 
             </div>
 
-            <span>{asset.value}%</span>
+            <strong>{asset.value}%</strong>
 
           </div>
 

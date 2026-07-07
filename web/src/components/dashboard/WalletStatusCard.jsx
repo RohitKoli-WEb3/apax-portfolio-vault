@@ -1,76 +1,118 @@
 import "./WalletStatusCard.css";
+
 import {
   FaWallet,
   FaEthereum,
   FaCheckCircle,
-  FaCopy,
+  FaCopy
 } from "react-icons/fa";
 
-function WalletStatus() {
 
-  const walletAddress = "0xA71F...91Bc";
+function WalletStatusCard() {
+
 
   return (
 
     <div className="wallet-card">
 
+
       <div className="wallet-header">
 
-        <FaWallet className="wallet-icon"/>
 
-        <h2>Wallet Status</h2>
+        <div className="wallet-icon">
 
-      </div>
-
-      <div className="wallet-item">
-
-        <span>Address</span>
-
-        <div className="wallet-address">
-
-          {walletAddress}
-
-          <FaCopy className="copy-icon"/>
+          <FaWallet />
 
         </div>
 
-      </div>
-
-      <div className="wallet-item">
-
-        <span>Network</span>
 
         <div>
 
-          <FaEthereum />
+          <h2>Wallet Status</h2>
 
-          Ethereum Mainnet
-
-        </div>
-
-      </div>
-
-      <div className="wallet-item">
-
-        <span>Status</span>
-
-        <div className="approved">
-
-          <FaCheckCircle />
-
-          Approved
+          <p>Secure connection</p>
 
         </div>
 
+
+        <span className="connected">
+
+          ● Connected
+
+        </span>
+
+
       </div>
 
-      <div className="wallet-item">
 
-        <span>Last Sync</span>
 
-        <strong>2 min ago</strong>
+      <div className="wallet-details">
+
+
+        <div className="wallet-row">
+
+          <span>Wallet Address</span>
+
+          <div className="address">
+
+            0xA71F...91BC
+
+            <FaCopy />
+
+          </div>
+
+        </div>
+
+
+
+        <div className="wallet-row">
+
+          <span>Network</span>
+
+          <div className="network">
+
+            <FaEthereum />
+
+            Ethereum Mainnet
+
+          </div>
+
+        </div>
+
+
+
+        <div className="wallet-row">
+
+          <span>Status</span>
+
+          <div className="approved">
+
+            <FaCheckCircle />
+
+            Verified
+
+          </div>
+
+        </div>
+
+
+
+        <div className="wallet-row">
+
+          <span>Last Sync</span>
+
+          <strong>
+
+            2 min ago
+
+          </strong>
+
+        </div>
+
 
       </div>
+
+
 
       <button className="wallet-btn">
 
@@ -78,10 +120,13 @@ function WalletStatus() {
 
       </button>
 
+
+
     </div>
 
   );
 
 }
 
-export default WalletStatus;
+
+export default WalletStatusCard;

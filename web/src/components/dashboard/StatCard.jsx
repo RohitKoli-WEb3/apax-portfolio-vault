@@ -1,4 +1,5 @@
 import "./StatCard.css";
+
 import {
   FaWallet,
   FaCoins,
@@ -6,7 +7,9 @@ import {
   FaChartLine,
 } from "react-icons/fa";
 
+
 function StatCard({ type, title, value, subtitle }) {
+
   const icons = {
     portfolio: <FaWallet />,
     holdings: <FaCoins />,
@@ -14,49 +17,110 @@ function StatCard({ type, title, value, subtitle }) {
     change: <FaChartLine />,
   };
 
+
+  const badge = {
+    portfolio: "+12.5%",
+    holdings: "24 Assets",
+    wallet: "Active",
+    change: "+2.4%",
+  };
+
+
   return (
-    <div className="stat-card">
+
+    <div className={`stat-card ${type}`}>
+
+
       <div className="stat-top">
+
+
         <div className={`icon-box ${type}`}>
+
           {icons[type]}
+
         </div>
 
-        <div className="stat-info">
-          <h4>{title}</h4>
-          <h2>{value}</h2>
 
-          {subtitle && (
-            <p>{subtitle}</p>
-          )}
+        <div className="badge">
+
+          {badge[type]}
+
         </div>
+
+
       </div>
 
-      {type === "portfolio" && (
+
+
+      <div className="stat-content">
+
+
+        <p className="stat-title">
+
+          {title}
+
+        </p>
+
+
+        <h2>
+
+          {value}
+
+        </h2>
+
+
+        <p className="stat-subtitle">
+
+          {subtitle}
+
+        </p>
+
+
+      </div>
+
+
+
+      {
+        type === "portfolio" &&
+
         <div className="mini-chart">
-          <svg
-            width="120"
-            height="40"
-            viewBox="0 0 120 40"
-          >
+
+          <svg viewBox="0 0 180 50">
+
+
             <polyline
-              fill="none"
-              stroke="#22c55e"
-              strokeWidth="3"
+
               points="
-              0,35
-              20,25
-              40,28
-              60,12
-              80,18
-              100,8
-              120,2
+              0,40
+              25,35
+              50,38
+              80,20
+              110,28
+              140,12
+              180,5
               "
+
+              fill="none"
+
+              stroke="#00e5ff"
+
+              strokeWidth="4"
+
             />
+
+
           </svg>
+
         </div>
-      )}
+
+      }
+
+
     </div>
+
   );
+
 }
+
 
 export default StatCard;

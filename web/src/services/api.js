@@ -1,21 +1,10 @@
-const api = {
+import axios from "axios";
 
-    async get(url) {
-
-        console.log("API GET:", url);
-
-        return Promise.resolve(null);
-
-    },
-
-    async post(url,data){
-
-        console.log("API POST:", url,data);
-
-        return Promise.resolve(null);
-
-    }
-
-};
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export default api;

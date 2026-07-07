@@ -1,9 +1,18 @@
-.layout {
-  display: flex;
+.layout{
+  display:flex;
+  min-height:100vh;
+  background:#050b16;
 }
 
-.main-content {
-  margin-left: 180px;
-  width: calc(100% - 180px);
-  overflow-x: hidden;
+
+.content{
+
+  margin-left:260px;
+
+  width:calc(100% - 260px);
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+
 }

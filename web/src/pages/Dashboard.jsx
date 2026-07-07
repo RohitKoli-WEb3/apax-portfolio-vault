@@ -34,8 +34,9 @@ function Dashboard() {
   }, []);
 
   return (
-    <PageLayout>
-      <div className="dashboard">
+<PageLayout>
+  <div className="dashboard">
+
         <div className="stats-grid">
           <StatCard
             type="portfolio"

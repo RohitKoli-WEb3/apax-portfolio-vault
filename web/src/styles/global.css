@@ -1,11 +1,153 @@
+@import url("./theme.css");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #050b16;
-  color: white;
-  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background-image:
+
+    linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+
+    linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  pointer-events: none;
+
+  opacity: .35;
+
+  z-index: -2;
+
+}
+
+body::after {
+
+  content: "";
+
+  position: fixed;
+
+  width: 900px;
+
+  height: 900px;
+
+  top: -420px;
+
+  left: 45%;
+
+  transform: translateX(-50%);
+
+  background:
+
+    radial-gradient(circle,
+
+      rgba(0, 229, 255, .16),
+
+      transparent 70%);
+
+  filter: blur(80px);
+
+  z-index: -3;
+
+}
+
+
+
+a {
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+
+ul {
+
+  list-style: none;
+
+}
+
+
+
+img {
+
+  max-width: 100%;
+
+  display: block;
+
+}
+
+
+
+::-webkit-scrollbar {
+
+  width: 9px;
+
+}
+
+::-webkit-scrollbar-track {
+
+  background: #06080d;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background:
+
+    linear-gradient(180deg,
+
+      #00E5FF,
+
+      #7C3AED);
+
+  border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #00E5FF;
+
+}
+
+::selection {
+
+  background: #00E5FF;
+
+  color: #000;
+
+}
+
+button,
+.card,
+.stat-card,
+.market-item,
+.asset-card,
+.wallet-card {
+
+  transition: .35s ease;
+
 }

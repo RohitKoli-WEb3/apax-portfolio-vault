@@ -1,7 +1,5 @@
 :root{
 
-/* ===== Colors ===== */
-
 --bg:#05070d;
 --bg-secondary:#090f17;
 
@@ -20,13 +18,7 @@
 --text:#ffffff;
 --text-secondary:#94a3b8;
 
-
-/* ===== Radius ===== */
-
 --radius:22px;
-
-
-/* ===== Shadows ===== */
 
 --shadow:
 0 12px 35px rgba(0,0,0,.45);

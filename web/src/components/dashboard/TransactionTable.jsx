@@ -1,118 +1,182 @@
 import "./TransactionTable.css";
 
 import {
-
-FaArrowDown,
-
-FaArrowUp,
-
-FaExchangeAlt
-
+  FaArrowDown,
+  FaArrowUp,
+  FaExchangeAlt
 } from "react-icons/fa";
+
+
 function TransactionTable() {
+
+
   const transactions = [
-  {
-    type: "Deposit",
-    asset: "Gold (XAU)",
-    amount: "10.25 XAU",
-    usd: "$24,850.25",
-    date: "May 25, 2025",
-    status: "Completed",
-  },
-  {
-    type: "Withdrawal",
-    asset: "Silver (XAG)",
-    amount: "50 XAG",
-    usd: "$1,567.50",
-    date: "May 24, 2025",
-    status: "Completed",
-  },
-  {
-    type: "Transfer",
-    asset: "Platinum (XPT)",
-    amount: "2.50 XPT",
-    usd: "$2,345.75",
-    date: "May 23, 2025",
-    status: "Pending",
-  },
-  {
-    type: "Deposit",
-    asset: "Gold (XAU)",
-    amount: "5 XAU",
-    usd: "$12,250",
-    date: "May 22, 2025",
-    status: "Completed",
-  },
-];
+
+    {
+      type: "Deposit",
+      asset: "Gold (XAU)",
+      amount: "10.25 XAU",
+      value: "$24,850",
+      date: "May 25, 2025",
+      status: "Completed"
+    },
+
+    {
+      type: "Withdrawal",
+      asset: "Silver (XAG)",
+      amount: "50 XAG",
+      value: "$1,567",
+      date: "May 24, 2025",
+      status: "Completed"
+    },
+
+    {
+      type: "Transfer",
+      asset: "Platinum (XPT)",
+      amount: "2.50 XPT",
+      value: "$2,345",
+      date: "May 23, 2025",
+      status: "Pending"
+    },
+
+    {
+      type: "Deposit",
+      asset: "APAX Token",
+      amount: "500 APAX",
+      value: "$12,250",
+      date: "May 22, 2025",
+      status: "Completed"
+    }
+
+  ];
+
 
   return (
-    <div className="transaction-table">
+
+    <div className="transaction-card">
+
+
       <div className="table-header">
 
-    <h2>Recent Transactions</h2>
+        <div>
 
-    <button className="view-btn">
+          <h2>Recent Transactions</h2>
 
-        View All
+          <p>Latest portfolio activities</p>
 
-    </button>
+        </div>
 
-</div>
+
+        <button>
+          View All
+        </button>
+
+
+      </div>
+
+
 
       <table>
+
         <thead>
-            <tr>
+
+          <tr>
+
             <th>Type</th>
             <th>Asset</th>
             <th>Amount</th>
-            <th>USD Value</th>
+            <th>Value</th>
             <th>Date</th>
             <th>Status</th>
-            </tr>
-            </thead>
+
+          </tr>
+
+        </thead>
+
+
 
         <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>
-                <div className="type-cell">
-                {
-                transaction.type==="Deposit"
-                ?
-                <FaArrowDown className="deposit"/>
-                :
-                transaction.type==="Withdrawal"
-                ?
-                <FaArrowUp className="withdraw"/>
-                :
-                <FaExchangeAlt className="transfer"/>
-                }
-                <span>
-                {transaction.type}
-                </span>
-                </div>
+
+          {
+            transactions.map((item, index) => (
+
+              <tr key={index}>
+
+
+                <td>
+
+                  <div className="type">
+
+                    {
+                      item.type === "Deposit"
+                        ?
+                        <FaArrowDown className="deposit" />
+                        :
+                        item.type === "Withdrawal"
+                          ?
+                          <FaArrowUp className="withdraw" />
+                          :
+                          <FaExchangeAlt className="transfer" />
+                    }
+
+
+                    <span>
+                      {item.type}
+                    </span>
+
+
+                  </div>
+
                 </td>
-              <td>{transaction.asset}</td>
-              <td>{transaction.amount}</td>
-              <td>
+
+
+                <td>{item.asset}</td>
+
+                <td>{item.amount}</td>
+
+                <td>{item.value}</td>
+
+                <td>{item.date}</td>
+
+
+                <td>
+
                   <span
-                  className={
-                  transaction.status==="Completed"
-                  ? "status completed"
-                  : "status pending"
-                  }
+                    className={
+                      item.status === "Completed"
+                        ?
+                        "completed"
+                        :
+                        "pending"
+                    }
                   >
-                  {transaction.status}
+
+                    {item.status}
+
                   </span>
-                  </td>
-            </tr>
-          ))}
+
+                </td>
+
+
+              </tr>
+
+
+            ))
+          }
+
+
         </tbody>
+
+
       </table>
+
+
     </div>
+
   );
+
+
 }
-<button className="view-btn">
-View All
-</button>
+
+
 export default TransactionTable;
