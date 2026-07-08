@@ -10,6 +10,9 @@ import TransactionTable from "../components/dashboard/TransactionTable";
 import WalletStatusCard from "../components/dashboard/WalletStatusCard";
 
 import { dashboardService } from "../services/dashboardService";
+import { transactionService } from "../services/transactionService";
+import { marketService } from "../services/marketService";
+import { walletService } from "../services/walletService";
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -19,21 +22,52 @@ function Dashboard() {
     dailyChange: "",
   });
 
-  const [chartData, setChartData] = useState([]);
+const [chartData, setChartData] = useState([]);
+const [transactions, setTransactions] = useState([]);
+const [marketData, setMarketData] = useState([]);
+const [assetAllocation, setAssetAllocation] = useState([]);
+const [wallet, setWallet] = useState({
+  address: "",
+  network: "",
+  balance: "",
+  status: "",
+  connected: false,
+});
 
-  useEffect(() => {
-    async function loadDashboard() {
-      const dashboardStats = await dashboardService.getDashboardStats();
+useEffect(() => {
+  async function loadDashboard() {
+    try {
+      const dashboardStats =
+      await dashboardService.getDashboardStats();
+
       setStats(dashboardStats);
+      setAssetAllocation(dashboardStats.assetAllocation);
 
-      const portfolioChart = await dashboardService.getPortfolioChart();
+      const portfolioChart =
+      await dashboardService.getPortfolioChart();
       setChartData(portfolioChart);
+
+      const transactionData =
+      await transactionService.getTransactions();
+      setTransactions(transactionData);
+
+      const market=
+      await marketService.getMarketData();
+      setMarketData(market);
+
+      const walletData = await walletService.getWallet();
+      setWallet(walletData);
+
+    } catch (error) {
+      console.error(error);
     }
+  }
 
-    loadDashboard();
-  }, []);
+  loadDashboard();
+}, []);
 
-  return (
+
+return (
 <PageLayout>
   <div className="dashboard">
 
@@ -69,13 +103,13 @@ function Dashboard() {
 
         <div className="middle-grid">
           <PortfolioChart data={chartData} />
-          <AssetAllocation />
-          <MarketSnapshot />
+          <AssetAllocation data={assetAllocation} />
+          <MarketSnapshot marketData={marketData} />
         </div>
 
         <div className="bottom-grid">
-          <TransactionTable />
-          <WalletStatusCard />
+          <TransactionTable transactions={transactions} />
+          <WalletStatusCard wallet={wallet} />
         </div>
       </div>
     </PageLayout>

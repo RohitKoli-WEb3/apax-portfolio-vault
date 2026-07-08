@@ -4,129 +4,77 @@ import {
   FaWallet,
   FaEthereum,
   FaCheckCircle,
-  FaCopy
+  FaCopy,
 } from "react-icons/fa";
 
-
-function WalletStatusCard() {
-
+function WalletStatusCard({ wallet }) {
+  const copyAddress = () => {
+    navigator.clipboard.writeText(wallet.address);
+    alert("Wallet Address Copied!");
+  };
 
   return (
-
     <div className="wallet-card">
-
-
       <div className="wallet-header">
-
-
         <div className="wallet-icon">
-
           <FaWallet />
-
         </div>
-
 
         <div>
-
           <h2>Wallet Status</h2>
-
           <p>Secure connection</p>
-
         </div>
 
-
         <span className="connected">
-
-          ● Connected
-
+          {wallet.connected ? "● Connected" : "● Disconnected"}
         </span>
-
 
       </div>
 
-
-
       <div className="wallet-details">
-
-
         <div className="wallet-row">
-
           <span>Wallet Address</span>
 
-          <div className="address">
-
-            0xA71F...91BC
-
+          <div
+            className="address"
+            onClick={copyAddress}
+            style={{ cursor: "pointer" }}
+          >
+            {wallet.address}
             <FaCopy />
-
           </div>
 
         </div>
-
-
 
         <div className="wallet-row">
-
           <span>Network</span>
-
           <div className="network">
-
             <FaEthereum />
-
-            Ethereum Mainnet
-
+            {wallet.network}
           </div>
-
         </div>
 
-
+        <div className="wallet-row">
+          <span>Balance</span>
+          <strong>{wallet.balance}</strong>
+        </div>
 
         <div className="wallet-row">
 
           <span>Status</span>
-
           <div className="approved">
-
             <FaCheckCircle />
-
-            Verified
-
+            {wallet.status}
           </div>
-
         </div>
-
-
-
-        <div className="wallet-row">
-
-          <span>Last Sync</span>
-
-          <strong>
-
-            2 min ago
-
-          </strong>
-
-        </div>
-
-
       </div>
 
-
-
       <button className="wallet-btn">
-
         View Wallet
-
       </button>
 
-
-
     </div>
-
   );
-
 }
-
 
 export default WalletStatusCard;

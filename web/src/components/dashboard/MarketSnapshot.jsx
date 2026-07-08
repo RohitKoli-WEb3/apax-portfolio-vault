@@ -1,71 +1,65 @@
 import "./MarketSnapshot.css";
 
 import {
-  FaCoins,
-  FaGem,
-  FaChartLine,
-  FaBitcoin,
   FaArrowUp,
   FaArrowDown,
 } from "react-icons/fa";
 
+import {
+  GiGoldBar,
+} from "react-icons/gi";
 
-function MarketSnapshot() {
+import {
+  FaGem,
+  FaBitcoin,
+} from "react-icons/fa";
 
+import {
+  MdOutlineDiamond,
+} from "react-icons/md";
 
-  const assets = [
+function MarketSnapshot({ marketData }) {
+  const getIcon = (asset) => {
+    switch (asset.toLowerCase()) {
+      case "gold":
+        return (
+          <div className="market-icon gold">
+            <GiGoldBar />
+          </div>
+        );
 
-    {
-      icon:<FaCoins/>,
-      name:"Gold",
-      symbol:"XAU",
-      price:"$3.3B",
-      change:"+2.45%",
-      trend:"up",
-      color:"gold"
-    },
+      case "silver":
+        return (
+          <div className="market-icon silver">
+            <FaGem />
+          </div>
+        );
 
+      case "platinum":
+        return (
+          <div className="market-icon purple">
+            <MdOutlineDiamond />
+          </div>
+        );
 
-    {
-      icon:<FaGem/>,
-      name:"Silver",
-      symbol:"XAG",
-      price:"$1.5B",
-      change:"+0.71%",
-      trend:"up",
-      color:"silver"
-    },
+      case "apax token":
+        return (
+          <div className="market-icon green">
+            <FaBitcoin />
+          </div>
+        );
 
-
-    {
-      icon:<FaChartLine/>,
-      name:"Platinum",
-      symbol:"XPT",
-      price:"$2.84B",
-      change:"-0.62%",
-      trend:"down",
-      color:"purple"
-    },
-
-
-    {
-      icon:<FaBitcoin/>,
-      name:"APAX Token",
-      symbol:"APAX",
-      price:"$12.3M",
-      change:"+5.32%",
-      trend:"up",
-      color:"green"
+      default:
+        return (
+          <div className="market-icon green">
+            <FaBitcoin />
+          </div>
+        );
     }
-
-  ];
-
-
+  };
 
   return (
-
     <div className="market-card">
-
 
       <div className="market-header">
 
@@ -77,102 +71,63 @@ function MarketSnapshot() {
 
         </div>
 
-
         <span className="live-dot">
-
           ● Live
-
         </span>
 
-
       </div>
-
-
 
       <div className="market-list">
 
+        {marketData.map((item) => (
 
-      {
-        assets.map((asset,index)=>(
-
-
-          <div 
+          <div
             className="market-item"
-            key={index}
+            key={item.id}
           >
-
 
             <div className="asset-info">
 
-
-              <div className={`market-icon ${asset.color}`}>
-
-                {asset.icon}
-
-              </div>
-
+              {getIcon(item.asset)}
 
               <div>
 
-                <h4>{asset.name}</h4>
+                <h4>{item.asset}</h4>
 
-                <p>{asset.symbol}</p>
+                <p>{item.symbol}</p>
 
               </div>
-
-
             </div>
-
-
 
             <div className="market-value">
 
+              <h4>{item.price}</h4>
 
-              <h4>
-
-                {asset.price}
-
-              </h4>
-
-
-              <span className={asset.trend}>
-
-
-                {
-                  asset.trend==="up"
-                  ?
-                  <FaArrowUp/>
-                  :
-                  <FaArrowDown/>
+              <span
+                className={
+                  item.change.startsWith("+")
+                    ? "up"
+                    : "down"
                 }
+              >
 
+                {item.change.startsWith("+") ? (
+                  <FaArrowUp />
+                ) : (
+                  <FaArrowDown />
+                )}
 
-                {asset.change}
-
+                {item.change}
 
               </span>
 
-
             </div>
+        </div>
 
-
-
-          </div>
-
-
-        ))
-      }
-
-
+        ))}
       </div>
-
-
-
     </div>
-
   );
-
 }
-
 
 export default MarketSnapshot;
