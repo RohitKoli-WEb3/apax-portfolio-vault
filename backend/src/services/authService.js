@@ -1,7 +1,6 @@
 export const loginService = async (email, password) => {
-
   if (
-    email === "rutuja@gmail.com" &&
+    email === "rohit@gmail.com" &&
     password === "123456"
   ) {
     return {
@@ -9,7 +8,7 @@ export const loginService = async (email, password) => {
       message: "Login Successful",
       user: {
         id: 1,
-        name: "Rutuja",
+        name: "Rohit",
         email,
       },
     };
@@ -22,11 +21,9 @@ export const loginService = async (email, password) => {
 };
 
 export const connectWalletService = async (walletAddress) => {
-
   return {
     success: true,
     message: "Wallet Connected Successfully",
     walletAddress,
   };
-
 };

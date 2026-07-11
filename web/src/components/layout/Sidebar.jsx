@@ -1,5 +1,7 @@
 import "./Sidebar.css";
 import logo from "../../assets/apaxLogo.png";
+import { NavLink } from "react-router-dom";
+
 
 import {
   FaHome,
@@ -27,33 +29,67 @@ function Sidebar() {
 
       <ul className="sidebar-menu">
 
-        <li className="active">
-          <FaHome />
-          <span>Dashboard</span>
-        </li>
+  <li>
+    <NavLink
+      to="/dashboard"
+      className={({ isActive }) =>
+        isActive ? "active" : ""
+      }
+    >
+      <FaHome />
+      <span>Dashboard</span>
+    </NavLink>
+  </li>
 
-        <li>
-          <FaChartPie />
-          <span>Portfolio</span>
-        </li>
+  <li>
+    <NavLink
+      to="/portfolio"
+      className={({ isActive }) =>
+        isActive ? "active" : ""
+      }
+    >
+      <FaChartPie />
+      <span>Portfolio</span>
+    </NavLink>
+  </li>
 
-        <li>
-          <FaWallet />
-          <span>Wallet</span>
-        </li>
+  <li>
+    <NavLink
+      to="/wallet"
+      className={({ isActive }) =>
+        isActive ? "active" : ""
+      }
+    >
+      <FaWallet />
+      <span>Wallet</span>
+    </NavLink>
+  </li>
 
-        <li>
-          <FaExchangeAlt />
-          <span>Transactions</span>
-        </li>
+  <li>
+    <NavLink
+      to="/transactions"
+      className={({ isActive }) =>
+        isActive ? "active" : ""
+      }
+    >
+      <FaExchangeAlt />
+      <span>Transactions</span>
+    </NavLink>
+  </li>
 
-        <li>
-          <FaCog />
-          <span>Settings</span>
-        </li>
+  <li>
+    <NavLink
+      to="/settings"
+      className={({ isActive }) =>
+        isActive ? "active" : ""
+      }
+    >
+      <FaCog />
+      <span>Settings</span>
+    </NavLink>
+  </li>
 
-      </ul>
-
+</ul>
       <div className="sidebar-bottom">
 
         <div className="vault-box">

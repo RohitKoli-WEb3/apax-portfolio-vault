@@ -1,13 +1,9 @@
-import { getWalletData } from "../services/walletService.js";
+import {getWalletData} from "../services/walletService.js";
 
-export const getWallet = async (req, res) => {
-  try {
-    const wallet = await getWalletData();
+export const getWallet=async(req,res)=>{
 
-    res.json(wallet);
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch wallet data",
-    });
-  }
+const data=await getWalletData();
+
+res.json(data);
+
 };

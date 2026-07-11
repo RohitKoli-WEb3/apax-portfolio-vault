@@ -1,67 +1,134 @@
 import "./Navbar.css";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   FaBell,
   FaSearch,
-  FaUserCircle
+  FaUserCircle,
 } from "react-icons/fa";
 
-function Navbar(){
+function Navbar() {
 
-const user="Rutuja";
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+  });
 
-return(
-<header className="navbar">
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/");
+  };
 
-<div className="welcome">
+  useEffect(() => {
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+    if (loggedUser) {
+      setUser(loggedUser);
+    }
+  }, []);
 
-<h1>Welcome Back, {user}</h1>
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    }
 
-<p>Track, manage and grow your tokenized asset portfolio</p>
+    document.addEventListener("mousedown",
+      handleClickOutside
+    );
 
-</div>
+    return () => {
 
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+    };
+  }, []);
 
-<div className="nav-actions">
+  return (
 
-<div className="search-box">
+    <header className="navbar">
+      <div className="welcome">
+        <h1>
+          Welcome Back, {user.name} 👋
+        </h1>
+        <p>
+          Track, manage and grow your tokenized asset portfolio
+        </p>
+      </div>
 
-<FaSearch/>
+      <div className="nav-actions">
+        <div className="search-box">
 
-<input placeholder="Search assets..." />
+          <FaSearch />
 
-</div>
+          <input
+            type="text"
+            placeholder="Search assets..."
+          />
 
+        </div>
 
-<button className="notification">
+        <button className="notification">
+          <FaBell />
+          <span></span>
+        </button>
 
-<FaBell/>
+        <div
+          className="profile"
+          ref={menuRef}
+        >
 
-<span></span>
+          <div
+            className="profile-info"
+            onClick={() =>
+              setShowMenu(!showMenu)
+            }
+          >
 
-</button>
+            <FaUserCircle />
 
+            <div>
+              <h4>{user.name}</h4>
+              <p>{user.email}</p>
+            </div>
+          </div>
 
-<div className="profile">
+          {showMenu && (
 
-<FaUserCircle/>
+            <div className="profile-menu">
 
-<div>
+              <button
+                  onClick={()=>{
+                  setShowMenu(false);
+                  navigate("/profile");
+                  }}
+                  >
 
-<h4>{user}</h4>
+                  👤 My Profile
 
-<p>Investor</p>
+                  </button>
+              <button>
+                ⚙ Settings
+              </button>
 
-</div>
+              <button
+                onClick={handleLogout}
+              >
+                🚪 Logout
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
 
-</div>
-
-
-</div>
-
-</header>
-);
-
+  );
 }
 
 export default Navbar;
