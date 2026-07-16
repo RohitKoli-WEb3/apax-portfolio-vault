@@ -1,69 +1,50 @@
 import "./WalletActivity.css";
 
-function WalletActivity(){
+function WalletActivity({ wallet }) {
 
-const activity=[
-{
-type:"Deposit",
-asset:"Gold",
-date:"Today",
-status:"Completed"
-},
-{
-type:"Transfer",
-asset:"Silver",
-date:"Yesterday",
-status:"Completed"
-},
-{
-type:"Withdrawal",
-asset:"Platinum",
-date:"25 Jun",
-status:"Pending"
-}
-];
+    if (!wallet) {
+        return <p>Loading activity...</p>;
+    }
 
-return(
+    return (
 
-<div className="wallet-activity">
+        <div className="wallet-activity">
 
-<h2>Recent Activity</h2>
+            <h2>Recent Activity</h2>
 
-<div className="activity-list">
+            <div className="activity-list">
 
-{activity.map((item,index)=>(
+                {wallet.activity.map((item, index) => (
 
-<div className="activity-item" key={index}>
+                    <div className="activity-item" key={index}>
 
-<div>
+                        <div>
 
-<h4>{item.type}</h4>
+                            <h4>{item.type}</h4>
 
-<p>{item.asset} • {item.date}</p>
+                            <p>{item.asset} • {item.date}</p>
 
-</div>
+                        </div>
 
-<span
-className={
-item.status==="Completed"
-?"completed"
-:"pending"
-}
->
+                        <span
+                            className={
+                                item.status === "Completed"
+                                    ? "completed"
+                                    : "pending"
+                            }
+                        >
+                            {item.status}
+                        </span>
 
-{item.status}
+                    </div>
 
-</span>
+                ))}
 
-</div>
+            </div>
 
-))}
+        </div>
 
-</div>
-
-</div>
-
-);
+    );
 
 }
 

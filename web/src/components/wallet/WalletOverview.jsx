@@ -1,65 +1,91 @@
 import "./WalletOverview.css";
-import {FaEthereum,FaCheckCircle,FaCopy} from "react-icons/fa";
+import { FaEthereum, FaCheckCircle, FaCopy } from "react-icons/fa";
 
-function WalletOverview(){
+function WalletOverview({ wallet }) {
 
-return(
+    if (!wallet) {
+        return <p>Loading wallet...</p>;
+    }
 
-<div className="wallet-overview">
+    return (
 
-<div className="wallet-top">
+        <div className="wallet-overview">
 
-<div>
+            <div className="wallet-top">
 
-<h2>Connected Wallet</h2>
+                <div>
 
-<p>Primary wallet linked to your APAX account</p>
+                    <h2>Connected Wallet</h2>
 
-</div>
+                    <p>Primary wallet linked to your APAX account</p>
 
-<span className="verified"><FaCheckCircle/> Verified</span>
+                </div>
 
-</div>
+                <span className="verified">
 
-<div className="wallet-grid">
+                    <FaCheckCircle />
 
-<div className="wallet-box">
+                    {wallet.status}
 
-<span>Total Balance</span>
+                </span>
 
-<h2>$1,248,750</h2>
+            </div>
 
-</div>
+            <div className="wallet-grid">
 
-<div className="wallet-box">
+                <div className="wallet-box">
 
-<span>Network</span>
+                    <span>Total Balance</span>
 
-<h2><FaEthereum/> Ethereum</h2>
+                    <h2>{wallet.balance} APAX</h2>
 
-</div>
+                </div>
 
-<div className="wallet-box">
+                <div className="wallet-box">
 
-<span>Wallet Address</span>
+                    <span>Network</span>
 
-<h2>0xA71F...91BC <FaCopy/></h2>
+                    <h2>
 
-</div>
+                        <FaEthereum />
 
-<div className="wallet-box">
+                        {wallet.network}
 
-<span>Status</span>
+                    </h2>
 
-<h2>Connected</h2>
+                </div>
 
-</div>
+                <div className="wallet-box">
 
-</div>
+                    <span>Wallet Address</span>
 
-</div>
+                    <h2>
 
-);
+                        {wallet.address.slice(0, 6)}
+
+                        ...
+
+                        {wallet.address.slice(-4)}
+
+                        <FaCopy />
+
+                    </h2>
+
+                </div>
+
+                <div className="wallet-box">
+
+                    <span>Status</span>
+
+                    <h2>{wallet.status}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
 
 }
 

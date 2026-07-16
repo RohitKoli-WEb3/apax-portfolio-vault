@@ -1,33 +1,45 @@
+import React, { useEffect, useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import WalletOverview from "../components/wallet/WalletOverview";
 import WalletAssets from "../components/wallet/WalletAssets";
 import WalletActivity from "../components/wallet/WalletActivity";
+import { walletService } from "../services/walletService";
 import "../styles/Wallet.css";
 
-function Wallet(){
+function Wallet() {
+    const [walletData, setWalletData] = useState(null);
 
-return(
+    useEffect(() => {
+        const fetchWallet = async () => {
+            try {
+                const address = "0xEeCCa2Dbef7ea84475EAB92DAB646A2a107bA35c";
 
-<PageLayout>
+                const data = await walletService.getWallet(address);
 
-<div className="wallet-page">
+                setWalletData(data);
+            } catch (error) {
+                console.error("Failed to fetch wallet data:", error);
+            }
+        };
 
-<h1>Wallet</h1>
+        fetchWallet();
+    }, []);
 
-<p>Manage your connected wallet and digital assets.</p>
+    return (
+        <PageLayout>
+            <div className="wallet-page">
+                <h1>Wallet</h1>
 
-<WalletOverview/>
+                <p>Manage your connected wallet and digital assets.</p>
 
-<WalletAssets/>
+                <WalletOverview wallet={walletData} />
 
-<WalletActivity/>
+                <WalletAssets wallet={walletData} />
 
-</div>
-
-</PageLayout>
-
-);
-
+                <WalletActivity wallet={walletData} />
+            </div>
+        </PageLayout>
+    );
 }
 
 export default Wallet;

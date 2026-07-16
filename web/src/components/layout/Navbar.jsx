@@ -104,16 +104,21 @@ function Navbar() {
             <div className="profile-menu">
 
               <button
-                  onClick={()=>{
+                onClick={() => {
                   setShowMenu(false);
                   navigate("/profile");
-                  }}
-                  >
+                }}
+              >
 
-                  👤 My Profile
+                👤 My Profile
 
-                  </button>
-              <button>
+              </button>
+              <button
+                onClick={() => {
+                  setShowMenu(false);
+                  navigate("/settings");
+                }}
+              >
                 ⚙ Settings
               </button>
 

@@ -22,54 +22,57 @@ function Dashboard() {
     dailyChange: "",
   });
 
-const [chartData, setChartData] = useState([]);
-const [transactions, setTransactions] = useState([]);
-const [marketData, setMarketData] = useState([]);
-const [assetAllocation, setAssetAllocation] = useState([]);
-const [wallet, setWallet] = useState({
-  address: "",
-  network: "",
-  balance: "",
-  status: "",
-  connected: false,
-});
+  const [chartData, setChartData] = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const [marketData, setMarketData] = useState([]);
+  const [assetAllocation, setAssetAllocation] = useState([]);
+  const [wallet, setWallet] = useState({
+    address: "",
+    network: "",
+    balance: "",
+    status: "",
+    connected: false,
+  });
 
-useEffect(() => {
-  async function loadDashboard() {
-    try {
-      const dashboardStats =
-      await dashboardService.getDashboardStats();
+  useEffect(() => {
+    async function loadDashboard() {
+      try {
+        const dashboardStats =
+          await dashboardService.getDashboardStats();
 
-      setStats(dashboardStats);
-      setAssetAllocation(dashboardStats.assetAllocation);
+        setStats(dashboardStats);
+        setAssetAllocation(dashboardStats.assetAllocation);
 
-      const portfolioChart =
-      await dashboardService.getPortfolioChart();
-      setChartData(portfolioChart);
+        const portfolioChart =
+          await dashboardService.getPortfolioChart();
+        setChartData(portfolioChart);
 
-      const transactionData =
-      await transactionService.getTransactions();
-      setTransactions(transactionData);
+        const transactionData =
+          await transactionService.getTransactions();
+        setTransactions(transactionData);
 
-      const market=
-      await marketService.getMarketData();
-      setMarketData(market);
+        const market =
+          await marketService.getMarketData();
+        setMarketData(market);
 
-      const walletData = await walletService.getWallet();
-      setWallet(walletData);
+        const walletAddress = "0xEeCCa2Dbef7ea84475EAB92DAB646A2a107bA35c";
 
-    } catch (error) {
-      console.error(error);
+        const walletData = await walletService.getWallet(walletAddress);
+
+        setWallet(walletData);
+
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
 
-  loadDashboard();
-}, []);
+    loadDashboard();
+  }, []);
 
 
-return (
-<PageLayout>
-  <div className="dashboard">
+  return (
+    <PageLayout>
+      <div className="dashboard">
 
         <div className="stats-grid">
           <StatCard
