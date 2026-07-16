@@ -1,0 +1,54 @@
+.wallet-assets{
+background:linear-gradient(145deg,#111827,#0b1220);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:25px;
+margin-bottom:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.wallet-assets h2{
+color:#fff;
+margin-bottom:20px;
+}
+
+.asset-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.asset-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:20px;
+transition:.3s;
+}
+
+.asset-card:hover{
+transform:translateY(-5px);
+border-color:#00e5ff;
+box-shadow:0 0 20px rgba(0,229,255,.2);
+}
+
+.asset-card h3{
+color:#fff;
+margin:0;
+}
+
+.asset-card p{
+color:#94a3b8;
+margin:10px 0;
+}
+
+.asset-card h2{
+color:#00e5ff;
+margin:0;
+}
+
+@media(max-width:900px){
+.asset-grid{
+grid-template-columns:1fr;
+}
+}

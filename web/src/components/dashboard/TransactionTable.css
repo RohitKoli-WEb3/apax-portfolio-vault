@@ -1,0 +1,134 @@
+.transaction-card {
+  background: linear-gradient(145deg, #111827, #0b1220);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  transition: 0.35s;
+  overflow-x: auto;
+}
+
+.transaction-card:hover {
+  transform: translateY(-5px);
+  border-color: #00e5ff;
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.15);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.table-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 22px;
+}
+
+.table-header p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.table-header button {
+  background: linear-gradient(135deg, #00e5ff, #2563eb);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.table-header button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+th {
+  text-align: left;
+  padding: 16px;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+td {
+  padding: 16px;
+  color: #e2e8f0;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tbody tr {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.type {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deposit {
+  color: #22c55e;
+}
+
+.withdraw {
+  color: #ef4444;
+}
+
+.transfer {
+  color: #8b5cf6;
+}
+
+.completed,
+.pending {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 95px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.completed {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.pending {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.12);
+}
+
+@media (max-width: 992px) {
+  .transaction-card {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 800px;
+  }
+}
